@@ -3,10 +3,17 @@ import FriendBox from "../_components/FriendBox.jsx";
 import { Suspense } from "react";
 import FakeText from "../_components/FakeText.jsx";
 import { PrismaClient } from '@prisma/client'
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
+
 
 const prisma = new PrismaClient();
 async function addFriends() {
-  let data = await prisma.relationships.findMany();
+  const session = await getServerSession();
+  if (!session) {
+    redirect("/login");
+  }
+  let data = await prisma.relationships.findMany({ where: { first_id_joined: { endsWith: '' } } });
   console.log(data);
   let components;
   data.map((e) => { });
