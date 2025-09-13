@@ -23,6 +23,7 @@ export default function Friends() {
 }
 
 function PlaceholderElements() {
+
   return ((<div className="rounded-xl border cursor-wait border-black shadow-lg border-solid p-3 m-5 bg-green-500/25">
     <h2 className="text-xl justify-between flex">
       {/* <Image alt="profile picture" width="25" height="25" class="inline" src=""></Image> */}
