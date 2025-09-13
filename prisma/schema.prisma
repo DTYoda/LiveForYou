@@ -29,7 +29,7 @@ model relationships {
 }
 
 model users {
-  id         String   @id @default(uuid())
+  id         Int   @id @default(autoincrement())
   created_at DateTime @default(now())
   name       String?
   email      String?  @unique
