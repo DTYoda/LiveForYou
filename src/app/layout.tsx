@@ -1,7 +1,7 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "Website",
+  title: "LiveForYou",
   description: "",
   icons: {
     icon: "/icon.png", // /public path
