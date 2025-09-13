@@ -1,5 +1,5 @@
 import Navbar from "../_components/Navbar.jsx";
-import LoginForm from "../_components/LoginForm.jsx";
+import LoginForm from "../_components/LoginForm.tsx";
 
 export default function Login() {
   return (
