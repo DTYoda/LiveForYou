@@ -1,8 +1,7 @@
 import Navbar from "../_components/Navbar.jsx";
 import ProfileMain from "../_components/ProfileMain.jsx";
 import { Suspense } from "react";
-
-const { PrismaClient } = require('../../generated/prisma')
+import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient();
 export default function Digest() {

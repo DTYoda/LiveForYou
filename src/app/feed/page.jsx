@@ -3,7 +3,7 @@ import Navbar from "../_components/Navbar.jsx";
 import Post from "../_components/Post.jsx"
 import PostContent from "../_components/PostContent.jsx";
 import { Suspense } from "react";
-const { PrismaClient } = require('../../generated/prisma')
+import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient();
 
@@ -19,7 +19,7 @@ export default function Feed() {
       <div className="max-w-2xl w-full">
         <Suspense fallback={<PlaceholderElements />}>
           {prisma.posts.findMany().then((e) => { console.log(e); createPosts(e); }).catch((e) => (<div>{JSON.stringify(e)}</div>))}
-          <Post user="ahhh"></Post>
+          {/* <Post user="ahhh"></Post> */}
         </Suspense>
       </div>
       <div className="w-32"></div>

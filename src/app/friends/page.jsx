@@ -1,12 +1,8 @@
 import Navbar from "../_components/Navbar.jsx";
 import FriendBox from "../_components/FriendBox.jsx";
 import { Suspense } from "react";
-<<<<<<< HEAD
-const { PrismaClient } = require("../../generated/prisma");
-=======
 import FakeText from "../_components/FakeText.jsx";
-const { PrismaClient } = require('../../generated/prisma')
->>>>>>> a560526f583fc77ac5e8e52baa3a3cf3a1947852
+import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient();
 export default function Friends() {
@@ -27,24 +23,6 @@ export default function Friends() {
 }
 
 function PlaceholderElements() {
-<<<<<<< HEAD
-  return (
-    <div className="rounded-xl border border-black shadow-lg border-solid p-3 m-5 bg-green-500/25">
-      <h2 className="text-xl">
-        {/* <Image alt="profile picture" width="25" height="25" class="inline" src=""></Image> */}
-        <button className="text-red-500 float-right hover:text-red-700/10 transition hover:scale-130">
-          {" "}
-          X{" "}
-        </button>
-      </h2>
-      <div className="rounded-xl border-gray-500/10 border shadow-lg border-solid p-1 m-2 ">
-        {" "}
-        {}
-      </div>
-    </div>
-  );
-}
-=======
   return ((<div className="rounded-xl border cursor-wait border-black shadow-lg border-solid p-3 m-5 bg-green-500/25">
     <h2 className="text-xl justify-between flex">
       {/* <Image alt="profile picture" width="25" height="25" class="inline" src=""></Image> */}
@@ -54,4 +32,3 @@ function PlaceholderElements() {
     <div className="rounded-xl border-gray-500/10 border shadow-lg border-solid p-1 m-2 ">     <FakeText></FakeText><FakeText></FakeText></div>
   </div>));
 }
->>>>>>> a560526f583fc77ac5e8e52baa3a3cf3a1947852
