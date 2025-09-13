@@ -1,8 +1,8 @@
 import Navbar from "../_components/Navbar.jsx";
 import Post from "../_components/Post.jsx"
-import { PrismaClient } from '@prisma/client'
+const { PrismaClient } = require('../../generated/prisma')
 
-//const prisma = new PrismaClient();
+const prisma = new PrismaClient();
 
 export default function Feed() {
   return (
