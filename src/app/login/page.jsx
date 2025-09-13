@@ -1,12 +1,12 @@
 import Navbar from "../_components/Navbar.jsx";
-import SettingsForm from "../_components/SettingsForm.jsx";
+import LoginForm from "../_components/LoginForm.jsx";
 
-export default function Settings() {
+export default function Login() {
   return (
     <div className="flex justify-center flex-col md:flex-row">
       <Navbar></Navbar>
       <div className="max-w-2xl w-full">
-        <SettingsForm></SettingsForm>
+        <LoginForm></LoginForm>
       </div>
       <div className="w-32"></div>
     </div>
