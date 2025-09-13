@@ -40,6 +40,24 @@ const handler = NextAuth({
       },
     }),
   ],
+  callbacks: {
+    async jwt({ token, user }) {
+      // On initial sign-in, 'user' is defined — persist id (and anything else you want)
+      if (user) {
+        token.id = user.id;
+        token.username = user.username ?? null;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      // Expose id on session.user so getServerSession/useSession can read it
+      if (session.user) {
+        session.user.id = token.id;
+        session.user.username = token.username ?? null;
+      }
+      return session;
+    },
+  },
 });
 
 export { handler as GET, handler as POST };

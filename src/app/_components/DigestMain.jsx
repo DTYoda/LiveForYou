@@ -2,13 +2,32 @@
 
 import NumberInput from "./NumberIn";
 import { useState } from "react";
+import { PrismaClient } from "@prisma/client";
+import { getServerSession } from "next-auth";
 
-export default function DigestMain() {
-  const [waterqty, setWQty] = useState<number | "">("");
-  const [stepsqty, setSQty] = useState<number | "">("");
-  const [stretchqty, setSTQty] = useState<number | "">("");
-  const [exqty, setEQty] = useState<number | "">("");
-  const [rateqty, setRQty] = useState<number | "">("");
+export default function DigestMain({ user }) {
+  async function handleSubmit() {
+    const payload = {
+      steps: stepsqty || null,
+      water: waterqty || null,
+      stretch: stretchqty || null,
+      exercise: exqty || null,
+      rating: rateqty || null,
+      comment: "" || "",
+      user_id: user || null,
+    };
+    await fetch("/api/post", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+  }
+
+  const [waterqty, setWQty] = useState(0);
+  const [stepsqty, setSQty] = useState(0);
+  const [stretchqty, setSTQty] = useState(0);
+  const [exqty, setEQty] = useState(0);
+  const [rateqty, setRQty] = useState(0);
   return (
     <div className="h-full w-full flex flex-col gap-8 text-2xl border rounded-2xl items-center">
       <div>Complete Your Daily Digest!</div>
@@ -73,7 +92,9 @@ export default function DigestMain() {
         />
       </div>
       <div>Comments: </div>
-      <button className="border rounded-2xl w-32">Post</button>
+      <button onClick={handleSubmit} className="border rounded-2xl w-32">
+        Post
+      </button>
     </div>
   );
 }
