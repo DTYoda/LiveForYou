@@ -18,6 +18,7 @@ model posts {
   likes_count     Int?
   dislikes_count  Int?
   favorites_count Int?
+  users           users?    @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
 
 /// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
@@ -36,4 +37,5 @@ model users {
   email      String?
   username   String?
   password   String?
+  posts      posts[]
 }
