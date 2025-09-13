@@ -11,29 +11,39 @@ datasource db {
 /* --- Models (SQLite-safe versions) --- */
 
 model posts {
-  id              Int      @id @default(autoincrement())   // was BigInt + autoincrement
-  created_at      DateTime @default(now())                  // removed @db.Timestamptz
-  user_id         String?                                   // removed @db.Uuid
-  post_title      String?
-  date_time       DateTime?
-  post_body       String?
-  likes_count     Int?     @default(0)
-  dislikes_count  Int?     @default(0)
-  favorites_count Int?     @default(0)
+  id          Int       @id @default(autoincrement())
+  created_at  DateTime  @default(now())
+  user_id     Int?
+  health_id   Int?
+  post_title  String?
+  date_time   DateTime? @default(now())
+  post_body   String?
+  likes_count Int?      @default(0)
 }
 
 model relationships {
-  id               Int      @id @default(autoincrement())   // was BigInt
+  id               Int      @id @default(autoincrement())
   created_at       DateTime @default(now())
-  first_id_joined  String?
-  second_id_joined String?
+  first_id_joined  Int?
+  second_id_joined Int?
 }
 
 model users {
-  id         String   @id @default(uuid())                  // replaced dbgenerated("gen_random_uuid()")
+  id         String   @id @default(uuid())
   created_at DateTime @default(now())
   name       String?
-  email      String?  @unique                               // recommended for login lookups
+  email      String?  @unique
   username   String?
   password   String?
+}
+
+model healthdata {
+  id       Int     @id @default(autoincrement())
+  user_id  Int?
+  steps    Int?
+  stretch  Int?
+  exercise Int?
+  water    Int?
+  rating   Int?
+  comment  String?
 }
