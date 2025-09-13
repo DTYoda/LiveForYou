@@ -1,6 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Live For You
+
+**Live For You** is a web-based application that allows users to set health goals, track their progress, and share it with others in daily posts called "digests."
+
+---
+
+## Features
+
+- Log daily health data (e.g., water intake, hours of sleep, exercise)
+- Set personal health goals and achieve streaks
+- Progress and post sharing with friends
+- User authentication (sign up/login)
+
+## Purpose
+
+This project was created as part of a hackathon challenge to build a web application under the theme "HEALTH AND SUSTAINABILITY."
+
+---
+
+## Tech Stack
+
+- **Frontend/Backend**: Next.js, HTML, CSS, JavaScript
+- **Database**: Primsa, SQL
+- **Deployment**: Vercel
 
 ## Getting Started
+
+To run the project locally:
+
+```bash
+# Clone the repository
+git clone https://github.com/your-username/health-tracker.git
+
+# Navigate into the project folder
+cd health-tracker
+
+# Install dependencies
+npm install
+
+# Start the development server
+npm start
+## Getting Started
+```
+
+---
+
+## Website
+
+
+
+---
+
+## Contributors
+
+[DTYoda](https://github.com/DTYoda)
+
+[lastlegume](https://github.com/lastlegume)
+
+[Perspective314](https://github.com/Perspective314)
+
+## License
+
+This project is licensed under [MIT License](https://opensource.org/license/mit).
+
+## Acknowledgments
+
+- Built during Hack@CMU 2025.
+- README was written in collaboration with ChatGPT.
+
+---
+
+## More Information
 
 First, run the development server:
 
