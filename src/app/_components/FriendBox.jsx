@@ -1,8 +1,8 @@
 "use client"
 import Image from 'next/image'
 
-function processClick() {
-
+function processClick(e) {
+    console.log(e.target.parentElement.parentElement);
 }
 
 function FriendBox({ children, user, date }) {
@@ -14,6 +14,5 @@ function FriendBox({ children, user, date }) {
         <div className="rounded-xl border-gray-500 border shadow-lg border-solid p-1 m-2 ">Friend since: {date}</div>
     </div>);
 }
-
 
 export default FriendBox;
