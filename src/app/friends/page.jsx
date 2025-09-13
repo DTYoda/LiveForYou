@@ -13,15 +13,18 @@ async function addFriends() {
   if (!session) {
     redirect("/login");
   }
-  let data = await prisma.relationships.findMany({ where: { first_id_joined: { endsWith: '' } } });
-  console.log(data);
-  let components;
-  data.map((e) => { });
-  for (let i = 0; i < data.length; i++) {
+  console.log(session.user.email);
+  const response = await fetch("/api/friends", {
+    method: "POST",
+    body: JSON.stringify({
+      email: userData.email
+    }),
+  });
 
-  }
-  let str = (<FriendBox userData={{ user: "Hayden", date: (new Date().toLocaleDateString()) }}></FriendBox >);
-  return str;
+
+  let friends = response.friends.map((e) => { <FriendBox userData={{ user: e, date: (new Date().toLocaleDateString()) }}></FriendBox > });
+
+  return friends;
 }
 export default function Friends() {
   return (
