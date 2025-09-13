@@ -1,5 +1,5 @@
 import Navbar from "../_components/Navbar.jsx";
-import DigestMain from "../_components/DigestMain.jsx";
+import DigestMain from "../_components/DigestMain.tsx";
 
 export default function Digest() {
   return (
