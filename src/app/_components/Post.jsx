@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 function Post({ children, user }) {
     return (<div className="rounded-xl border border-black shadow-lg border-solid p-3 m-5 bg-green-500/25">
-        <h2>
+        <h2 className="text-2xl">
             {/* <Image alt="profile picture" width="25" height="25" class="inline" src=""></Image> */}
             {user}
         </h2>
