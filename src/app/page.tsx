@@ -2,9 +2,10 @@ import Navbar from "./_components/Navbar.jsx";
 
 export default function Home() {
   return (
-    <div className="flex">
+    <div className="flex justify-center flex-col md:flex-row">
       <Navbar></Navbar>
-      <div className="w-2xl bg-green-50"></div>
+      <div className="max-w-2xl w-full border rounded-2xl"></div>
+      <div className="w-32"></div>
     </div>
   );
 }
