@@ -2,8 +2,6 @@
 
 import NumberInput from "./NumberIn";
 import { useState } from "react";
-import { PrismaClient } from "@prisma/client";
-import { getServerSession } from "next-auth";
 
 export default function DigestMain({ user }) {
   async function handleSubmit() {
@@ -13,8 +11,8 @@ export default function DigestMain({ user }) {
       stretch: stretchqty || null,
       exercise: exqty || null,
       rating: rateqty || null,
-      comment: "" || "",
-      user_id: user || null,
+      comment: comments || "",
+      user_email: user.email || null,
     };
     await fetch("/api/post", {
       method: "POST",
@@ -28,9 +26,22 @@ export default function DigestMain({ user }) {
   const [stretchqty, setSTQty] = useState(0);
   const [exqty, setEQty] = useState(0);
   const [rateqty, setRQty] = useState(0);
+  const [comments, setComments] = useState("");
+  const [title, setTitle] = useState("");
   return (
     <div className="h-full w-full flex flex-col gap-8 text-2xl border rounded-2xl items-center">
       <div>Complete Your Daily Digest!</div>
+      <div className="flex flex-col w-full items-center">
+        <label htmlFor="myInput">Title:</label>
+        <input
+          className="text-sm w-1/2 h-8"
+          type="text"
+          id="comments"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          placeholder="Type here..."
+        />
+      </div>
       <div className="p-0">
         <NumberInput
           label="Cups of Water"
@@ -50,7 +61,7 @@ export default function DigestMain({ user }) {
           onChange={setSQty}
           min={0}
           max={1000000}
-          step={1}
+          step={100}
           helperText=""
           prefix={<span className="text-sm">#</span>}
         />
@@ -91,7 +102,17 @@ export default function DigestMain({ user }) {
           prefix={<span className="text-sm">#</span>}
         />
       </div>
-      <div>Comments: </div>
+      <div className="flex flex-col w-full items-center">
+        <label htmlFor="myInput">Comments:</label>
+        <textarea
+          className="text-sm w-1/2 h-64"
+          type="text"
+          id="comments"
+          value={comments}
+          onChange={(e) => setComments(e.target.value)}
+          placeholder="Type here..."
+        />
+      </div>
       <button onClick={handleSubmit} className="border rounded-2xl w-32">
         Post
       </button>

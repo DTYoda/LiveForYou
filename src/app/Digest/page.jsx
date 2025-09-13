@@ -8,12 +8,12 @@ export default async function Digest() {
   if (!session) {
     redirect("/");
   }
-  console.log(session);
+  console.log(session.user);
   return (
     <div className="flex justify-center flex-col md:flex-row">
       <Navbar></Navbar>
       <div className="max-w-2xl w-full">
-        <DigestMain user={session}></DigestMain>
+        <DigestMain user={session.user}></DigestMain>
       </div>
       <div className="w-32"></div>
     </div>
