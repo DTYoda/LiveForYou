@@ -1,39 +1,48 @@
+// "use client"
+
 import Navbar from "../_components/Navbar.jsx";
 import FriendBox from "../_components/FriendBox.jsx";
 import { Suspense } from "react";
 import FakeText from "../_components/FakeText.jsx";
-import { PrismaClient } from '@prisma/client'
+import FriendContainer from "./FriendContainer.jsx"
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 
-
-const prisma = new PrismaClient();
 async function addFriends() {
+  // const prisma = new PrismaClient();
+
+  // const session = await getServerSession();
+  // if (!session) {
+  //   redirect("/login");
+  // }
+  // console.log(session.user.email);
+  // const response = await fetch("/api/friends", {
+  //   method: "POST",
+  //   body: JSON.stringify({
+  //     email: session.user.email
+  //   }),
+  // });
+
+  // let friends = response.friends.map((e) => { <FriendBox userData={{ user: e.name, date: e.date }}></FriendBox > });
+
+  // return friends;
+  return <div>Hello</div>;
+}
+
+export default async function Friends() {
   const session = await getServerSession();
   if (!session) {
     redirect("/login");
   }
-  console.log(session.user.email);
-  const response = await fetch("/api/friends", {
-    method: "POST",
-    body: JSON.stringify({
-      email: userData.email
-    }),
-  });
 
 
-  let friends = response.friends.map((e) => { <FriendBox userData={{ user: e, date: (new Date().toLocaleDateString()) }}></FriendBox > });
-
-  return friends;
-}
-export default function Friends() {
   return (
     <div className="flex justify-center flex-col md:flex-row">
       <Navbar></Navbar>
       <div className="max-w-2xl w-full">
         <Suspense fallback={<PlaceholderElements />}>
-          {addFriends()}
-          <FriendBox userData={{ user: "Hayden", date: (new Date().toLocaleDateString()) }}></FriendBox>
+          <FriendContainer userData={{ email: session.user.email }} r></FriendContainer>
+          {/* <FriendBox userData={{ user: "Hayden", date: (new Date().toLocaleDateString()) }}></FriendBox> */}
         </Suspense>
       </div>
       <div className="w-32"></div>
