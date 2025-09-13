@@ -5,20 +5,29 @@ import FakeText from "../_components/FakeText.jsx";
 import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient();
+async function addFriends() {
+  let data = await prisma.relationships.findMany();
+  console.log(data);
+  let components;
+  data.map((e) => { });
+  for (let i = 0; i < data.length; i++) {
+
+  }
+  let str = (<FriendBox userData={{ user: "Hayden", date: (new Date().toLocaleDateString()) }}></FriendBox >);
+  return str;
+}
 export default function Friends() {
   return (
     <div className="flex justify-center flex-col md:flex-row">
       <Navbar></Navbar>
       <div className="max-w-2xl w-full">
         <Suspense fallback={<PlaceholderElements />}>
-          {prisma.relationships.findMany().then((e) => {
-            console.log(e);
-          })}
-          <FriendBox user="Hayden"></FriendBox>
+          {addFriends()}
+          <FriendBox userData={{ user: "Hayden", date: (new Date().toLocaleDateString()) }}></FriendBox>
         </Suspense>
       </div>
       <div className="w-32"></div>
-    </div>
+    </div >
   );
 }
 

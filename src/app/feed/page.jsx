@@ -8,7 +8,7 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient();
 
 async function createPosts(e) {
-  let data = await prisma.posts.findMany();
+  let data = await prisma.posts.findFirst();
 
 }
 
@@ -18,7 +18,7 @@ export default function Feed() {
       <Navbar></Navbar>
       <div className="max-w-2xl w-full">
         <Suspense fallback={<PlaceholderElements />}>
-          {prisma.posts.findMany().then((e) => { console.log(e); createPosts(e); }).catch((e) => (<div>{JSON.stringify(e)}</div>))}
+          {createPosts()}
           {/* <Post user="ahhh"></Post> */}
         </Suspense>
       </div>
