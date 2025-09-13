@@ -1,3 +1,6 @@
+const { PrismaClient } = require('../../generated/prisma')
+
+const prisma = new PrismaClient();
 
 export default function ProfileMain({ user }) {
     return (

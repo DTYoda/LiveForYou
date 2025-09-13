@@ -1,6 +1,8 @@
 import Navbar from "../_components/Navbar.jsx";
 import ProfileMain from "../_components/ProfileMain.jsx";
+const { PrismaClient } = require('../../generated/prisma')
 
+const prisma = new PrismaClient();
 export default function Digest() {
   return (
     <div className="flex justify-center flex-col md:flex-row">
